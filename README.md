@@ -26,16 +26,21 @@ cd TaskQueueSystem
 
 ### Running Tests
 
-To run the tests and verify the system, use the following command:
-
-```
-pytest task_queue_system/tests/
-```
-
 Ensure you have `pytest` installed. If not, install it using pip:
 
 ```
 pip install pytest
+```
+
+To run the tests and verify the system, use the following command:
+
+```
+pytest tests
+```
+or
+
+```
+python -m pytest tests
 ```
 
 ## Usage

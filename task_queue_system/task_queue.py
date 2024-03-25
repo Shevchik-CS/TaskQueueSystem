@@ -1,6 +1,11 @@
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
+"""
+The main module
+"""
 from dataclasses import dataclass
-from task_queue_system.exceptions import TaskQueueException
 import heapq
+from task_queue_system.exceptions import TaskQueueException
 
 
 @dataclass
@@ -48,8 +53,7 @@ class TaskQueue:
             if self._check_sufficiency_resources(task.resources, available_resources):
                 res_task = task
                 break
-            else:
-                temp_tasks.append((-task.priority, index, task))
+            temp_tasks.append((-task.priority, index, task))
 
         # Restore the other tasks to the heap
         for priority, index, task in temp_tasks:
@@ -61,7 +65,8 @@ class TaskQueue:
         raise TaskQueueException("No suitable task found for the given resources.")
 
     @staticmethod
-    def _check_sufficiency_resources(required_resources: Resources, available_resources: Resources) -> bool:
+    def _check_sufficiency_resources(required_resources: Resources,
+                                     available_resources: Resources) -> bool:
         return (
                 required_resources.ram <= available_resources.ram
                 and required_resources.cpu_cores <= available_resources.cpu_cores

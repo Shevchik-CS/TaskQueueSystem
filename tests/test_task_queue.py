@@ -1,3 +1,8 @@
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
+"""
+Tests for TaskQueueSystem
+"""
 import pytest
 from task_queue_system import Task, Resources, TaskQueue, TaskQueueException
 
@@ -45,7 +50,8 @@ def test_large_scale():
     tq = TaskQueue()
     for i in range(2000):
         tq.add_task(Task(priority=1 + i % 100, id=i,
-                         resources=Resources(ram=1 + i % 10, cpu_cores=1, gpu_count=1), content=f"Task number {i}"))
+                         resources=Resources(ram=1 + i % 10, cpu_cores=1, gpu_count=1),
+                         content=f"Task number {i}"))
 
     available_resources = Resources(ram=3, cpu_cores=2, gpu_count=1)
     fetched_tasks = 0
